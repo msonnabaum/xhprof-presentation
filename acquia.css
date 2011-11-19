@@ -7,6 +7,8 @@
 */
 body {
   background: #222;
+ /* font-family: 'ChunkFiveRegular';*/
+  font-family: 'BebasRegular';
 }
 
 #preso, .slide {
@@ -18,22 +20,21 @@ body {
   margin: 30px 0 10px 0;
   letter-spacing: 0.02em;
   text-shadow: 0 3px 0 rgba(20,20,20, 0.8);
-  font-family: myriad pro;
+  font-family: 'VegurRegular';
   color: #FFDD99;
 }
 
-h1 {
+.slide h1 {
  /* text-shadow: 0px 1px 0px #DDD;*/
   text-shadow: #FFCC00 0px 2px 0px, #CC6600 0px 4px 0px;
-  font-family: ChunkFive;
+  font-family: 'ChunkFiveRegular';
   color: #3399CC
 }
 
 h2 {
   color: #CC6600;
 }
-h1, h2 {
-  /*font-family: Museo Sans, Lucida Granda;*/
+.slide h1, .slide h2 {
   letter-spacing: 0px;
   font-weight: 900;
 }
