@@ -7,6 +7,8 @@
 */
 body {
   background: #222;
+ /* font-family: 'ChunkFiveRegular';*/
+  font-family: 'BebasRegular';
 }
 
 #preso, .slide {
