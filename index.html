@@ -33,6 +33,8 @@
   
     <link rel="stylesheet" href="file/acquia.css" type="text/css"/>
   
+    <link rel="stylesheet" href="file/stylesheet.css" type="text/css"/>
+  
 
   
 
@@ -82,8 +84,7 @@
 
 <h2>(or, Identifying the Suck)</h2>
 
-<p>Presented by: Mark Sonnabaum</p>
-</div>
+<p>Presented by: Mark Sonnabaum</p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/2">
 <h1>whoami</h1>
 
@@ -94,7 +95,6 @@
 <li>d.o. <a href="http://drupal.org/user/75278">msonnabaum</a></li>
 <li>twitter <a href="http://twitter.com/msonnabaum">@msonnabaum</a></li>
 </ul>
-
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/3">
 <h1>What is XHProf?</h1>
@@ -107,8 +107,7 @@
 
 
 <p><a href="https://github.com/facebook/xhprof">https://github.com/facebook/xhprof</a>
-<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p>
-</div>
+<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/4">
 <h1>Profiling</h1>
 
@@ -116,7 +115,6 @@
 <li>It's awesome</li>
 <li>You should do it</li>
 </ul>
-
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/5">
 <h1>xdebug/webgrind?</h1>
@@ -125,7 +123,6 @@
 <li>No memory profiling as of Xdebug 2.0.4</li>
 <li>Adds overhead</li>
 </ul>
-
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/6">
 <h1>Common code issues</h1>
@@ -134,19 +131,16 @@
 <li>Unnecessary repitition (static caches, persistent caches)</li>
 <li>Stuff that is dumb (make less dumb)</li>
 </ul>
-
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/7">
 <h1>Installing: pecl (?)</h1>
 
 <pre><code>pecl install xhprof-0.9.2
-</code></pre>
-</div>
+</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/8">
 <h1>Installing: Ubuntu</h1>
 
-<p><a href="https://launchpad.net/~brianmercer/+archive/php5-xhprof">https://launchpad.net/~brianmercer/+archive/php5-xhprof</a></p>
-</div>
+<p><a href="https://launchpad.net/~brianmercer/+archive/php5-xhprof">https://launchpad.net/~brianmercer/+archive/php5-xhprof</a></p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/9">
 <h1>Installing: OSX - MAMP</h1>
 
@@ -160,13 +154,11 @@ cd xhprof-0.9.2/extension
 make
 cp modules/xhprof.so $(/Applications/MAMP/bin/php/php5.3.6/bin/php-config --extension-dir)/
 echo "extension=xhprof.so" &gt;&gt; /Applications/MAMP/bin/php/php5.3.6/conf/php.ini
-</code></pre>
-</div>
+</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/10">
 <h1>Installing: OSX</h1>
 
-<p><a href="https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb">https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb</a></p>
-</div>
+<p><a href="https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb">https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb</a></p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/11">
 <h1>Installing: source</h1>
 
@@ -175,8 +167,7 @@ tar -xzf xhprof-0.9.2.tgz &amp;&amp; cd xhprof-0.9.2
 phpize
 make
 cp modules/xhprof.so $(php-config --extension-dir)/
-</code></pre>
-</div>
+</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/12">
 <h1>Preperations</h1>
 
@@ -186,7 +177,6 @@ cp modules/xhprof.so $(php-config --extension-dir)/
 <li>devel</li>
 <li>memcache</li>
 </ul>
-
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/13">
 <h1>Preperations</h1>
@@ -194,8 +184,7 @@ cp modules/xhprof.so $(php-config --extension-dir)/
 <pre class="sh_php"><code>$conf['devel_xhprof_enabled'] = 1;
 $conf['devel_xhprof_directory'] = '/Users/msonnabaum/www/xhprof';
 $conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';
-$conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';</code></pre>
-</div>
+$conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content subsection" ref="one/01_slide/14">
 <h1>DEMO</h1>
 
@@ -205,8 +194,7 @@ $conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';</code></pre>
 .notes - http://d7.dev/admin/reports/xhprof
 .notes - http://d7.dev/admin/reports/xhprof/diff/4e99c0c276515/4e99c0bf949a8</p>
 
-<p class="notes">XHProflib - https://github.com/msonnabaum/XHProfLib</p>
-</div>
+<p class="notes">XHProflib - https://github.com/msonnabaum/XHProfLib</p></div>
 </div></div>
 
 </body>
