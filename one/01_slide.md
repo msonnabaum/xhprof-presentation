@@ -10,21 +10,24 @@ Presented by: Mark Sonnabaum
 - Performance engineer @ Acquia
 - d.o. [msonnabaum](http://drupal.org/user/75278)
 - twitter [@msonnabaum](http://twitter.com/msonnabaum)
+- Not usually [moustached (http://mobro.co/msonnabaum)](http://mobro.co/msonnabaum)
 
 
-!SLIDE bullets
-# What is XHProf?
-- A Hierarchical Profiler for PHP
-- A PHP user interface (optional)
-- Originally developed at Facebook
 
-[https://github.com/facebook/xhprof](https://github.com/facebook/xhprof)
-[http://pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof)
 
 !SLIDE bullets
 # Profiling
 - It's awesome
 - You should do it
+
+!SLIDE bullets
+# What is XHProf?
+- A php profiler (php extension)
+- A PHP user interface (optional)
+- Originally developed at Facebook
+
+[https://github.com/facebook/xhprof](https://github.com/facebook/xhprof)
+[http://pecl.php.net/package/xhprof](http://pecl.php.net/package/xhprof)
 
 !SLIDE bullets
 # xdebug/webgrind?
@@ -46,21 +49,17 @@ Presented by: Mark Sonnabaum
 [https://launchpad.net/~brianmercer/+archive/php5-xhprof](https://launchpad.net/~brianmercer/+archive/php5-xhprof)
 !SLIDE bullets
 # Installing: OSX - MAMP
+## php 5.3 (simple)
 [https://gist.github.com/1306569](https://gist.github.com/1306569)
 
-    wget http://pecl.php.net/get/xhprof-0.9.2.tgz
-    tar -xzf xhprof-0.9.2.tgz
-    cd xhprof-0.9.2/extension
-    /Applications/MAMP/bin/php/php5.3.6/bin/phpize
-    ./configure
-    make
-    cp modules/xhprof.so $(/Applications/MAMP/bin/php/php5.3.6/bin/php-config --extension-dir)/
-    echo "extension=xhprof.so" >> /Applications/MAMP/bin/php/php5.3.6/conf/php.ini
+## php 5.2 (painful)
+[http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard](http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard)
 
 !SLIDE bullets
-# Installing: OSX
+# Installing: OSX - brew
 
 [https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb]( https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb)
+    brew install xhprof
 
 !SLIDE bullets
 # Installing: source
@@ -76,20 +75,26 @@ Presented by: Mark Sonnabaum
 
 - Setup the site locally
 - disable xdebug
-- devel
-- memcache
+   <pre><code> ;zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so</code></pre>
+- D6: [devel](http://drupal.org/project/devel), D7: [xhprof module](http://drupal.org/project/xhprof)
+- [memcache](http://drupal.org/project/memcache) (optional)
 
 !SLIDE bullets
 # Preperations
+## D6
 
     @@@ Php
     $conf['devel_xhprof_enabled'] = 1;
     $conf['devel_xhprof_directory'] = '/Users/msonnabaum/www/xhprof';
     $conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';
-    $conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';
+
+## D7
+
+    @@@ Php
+    $conf['xhprof_enabled'] = 1;
 
 !SLIDE subsection
-# DEMO
+# PROFILIN' TIME
 
 .notes http://xhprof-pres.dev/events - unpack_options
 
