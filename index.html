@@ -31,9 +31,9 @@
   <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
 
   
-    <link rel="stylesheet" href="file/acquia.css" type="text/css"/>
+    <link rel="stylesheet" href="./file/acquia.css" type="text/css"/>
   
-    <link rel="stylesheet" href="file/stylesheet.css" type="text/css"/>
+    <link rel="stylesheet" href="./file/stylesheet.css" type="text/css"/>
   
 
   
@@ -94,21 +94,10 @@
 <li>Performance engineer @ Acquia</li>
 <li>d.o. <a href="http://drupal.org/user/75278">msonnabaum</a></li>
 <li>twitter <a href="http://twitter.com/msonnabaum">@msonnabaum</a></li>
+<li>Not usually <a href="http://mobro.co/msonnabaum">moustached (http://mobro.co/msonnabaum)</a></li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/3">
-<h1>What is XHProf?</h1>
-
-<ul>
-<li>A Hierarchical Profiler for PHP</li>
-<li>A PHP user interface (optional)</li>
-<li>Originally developed at Facebook</li>
-</ul>
-
-
-<p><a href="https://github.com/facebook/xhprof">https://github.com/facebook/xhprof</a>
-<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/4">
 <h1>Profiling</h1>
 
 <ul>
@@ -116,6 +105,18 @@
 <li>You should do it</li>
 </ul>
 </div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/4">
+<h1>What is XHProf?</h1>
+
+<ul>
+<li>A php profiler (php extension)</li>
+<li>A PHP user interface (optional)</li>
+<li>Originally developed at Facebook</li>
+</ul>
+
+
+<p><a href="https://github.com/facebook/xhprof">https://github.com/facebook/xhprof</a>
+<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/5">
 <h1>xdebug/webgrind?</h1>
 
@@ -144,21 +145,20 @@
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/9">
 <h1>Installing: OSX - MAMP</h1>
 
+<h2>php 5.3 (simple)</h2>
+
 <p><a href="https://gist.github.com/1306569">https://gist.github.com/1306569</a></p>
 
-<pre><code>wget http://pecl.php.net/get/xhprof-0.9.2.tgz
-tar -xzf xhprof-0.9.2.tgz
-cd xhprof-0.9.2/extension
-/Applications/MAMP/bin/php/php5.3.6/bin/phpize
-./configure
-make
-cp modules/xhprof.so $(/Applications/MAMP/bin/php/php5.3.6/bin/php-config --extension-dir)/
-echo "extension=xhprof.so" &gt;&gt; /Applications/MAMP/bin/php/php5.3.6/conf/php.ini
-</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/10">
-<h1>Installing: OSX</h1>
+<h2>php 5.2 (painful)</h2>
 
-<p><a href="https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb">https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb</a></p></div>
+<p><a href="http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard">http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard</a></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/10">
+<h1>Installing: OSX - brew</h1>
+
+<p><a href="https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb">https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb</a></p>
+
+<pre><code>brew install xhprof
+</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/11">
 <h1>Installing: source</h1>
 
@@ -173,20 +173,26 @@ cp modules/xhprof.so $(php-config --extension-dir)/
 
 <ul>
 <li>Setup the site locally</li>
-<li>disable xdebug</li>
-<li>devel</li>
-<li>memcache</li>
+<li>disable xdebug
+ <pre><code> ;zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so</code></pre></li>
+<li>D6: <a href="http://drupal.org/project/devel">devel</a>, D7: <a href="http://drupal.org/project/xhprof">xhprof module</a></li>
+<li><a href="http://drupal.org/project/memcache">memcache</a> (optional)</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/13">
 <h1>Preperations</h1>
 
+<h2>D6</h2>
+
 <pre class="sh_php"><code>$conf['devel_xhprof_enabled'] = 1;
 $conf['devel_xhprof_directory'] = '/Users/msonnabaum/www/xhprof';
-$conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';
-$conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';</code></pre></div>
+$conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';</code></pre>
+
+<h2>D7</h2>
+
+<pre class="sh_php"><code>$conf['xhprof_enabled'] = 1;</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content subsection" ref="one/01_slide/14">
-<h1>DEMO</h1>
+<h1>PROFILIN' TIME</h1>
 
 <p class="notes">http://xhprof-pres.dev/events - unpack_options</p>
 
