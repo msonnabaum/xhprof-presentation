@@ -3,6 +3,8 @@
 ## (or, Identifying the Suck)
 Presented by: Mark Sonnabaum
 
+http://msonnabaum.github.com/xhprof-presentation
+
 !SLIDE bullets
 # whoami
 
@@ -10,10 +12,6 @@ Presented by: Mark Sonnabaum
 - Performance engineer @ Acquia
 - d.o. [msonnabaum](http://drupal.org/user/75278)
 - twitter [@msonnabaum](http://twitter.com/msonnabaum)
-- Not usually [moustached (http://mobro.co/msonnabaum)](http://mobro.co/msonnabaum)
-
-
-
 
 !SLIDE bullets
 # Profiling
