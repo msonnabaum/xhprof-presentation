@@ -94,6 +94,12 @@ http://msonnabaum.github.com/xhprof-presentation
 !SLIDE subsection
 # PROFILIN' TIME
 
+!SLIDE bullets
+# Resources
+
+* [XHProf module for D7](http://drupal.org/project/xhprof)
+* [XHProflib](https://github.com/msonnabaum/xhproflib)
+
 .notes http://xhprof-pres.dev/events - unpack_options
 
 .notes native drupal xhprof ui
