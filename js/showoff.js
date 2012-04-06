@@ -50,7 +50,7 @@ function setupPreso(load_slides, prefix) {
 function loadSlides(load_slides, prefix) {
 	//load slides offscreen, wait for images and then initialize
 	if (load_slides) {
-		$("#slides").load(loadSlidesPrefix + "slides", false, function(){
+		$("#slides").load("slides", false, function(){
 			$("#slides img").batchImageLoad({
 			loadingCompleteCallback: initializePresentation(prefix)
 		})
@@ -252,16 +252,6 @@ function determineIncremental()
 	})
 }
 
-function showIncremental(incr)
-{
-		elem = incrElem.eq(incrCurr)
-		if (incrCode && elem.hasClass('command')) {
-			incrElem.eq(incrCurr).css('visibility', 'visible').jTypeWriter({duration:1.0})
-		} else {
-			incrElem.eq(incrCurr).css('visibility', 'visible')
-		}
-}
-
 function prevStep()
 {
 
@@ -287,12 +277,13 @@ function nextStep()
 		slidenum++
 		return showSlide()
 	} else {
-		showIncremental(incrCurr);
-		var incrEvent = jQuery.Event("showoff:incr");
-		incrEvent.slidenum = slidenum;
-		incrEvent.incr = incrCurr;
-		$(currentSlide).find(".content").trigger(incrEvent);
-		incrCurr++;
+		elem = incrElem.eq(incrCurr)
+		if (incrCode && elem.hasClass('command')) {
+			incrElem.eq(incrCurr).css('visibility', 'visible').jTypeWriter({duration:1.0})
+		} else {
+			incrElem.eq(incrCurr).css('visibility', 'visible')
+		}
+		incrCurr++
 	}
 }
 

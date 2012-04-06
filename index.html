@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>My Preso</title>
+  <title>Profiling Drupal with XHProf</title>
 
   <meta name="viewport" content="width=device-width"/>
 
@@ -31,9 +31,9 @@
   <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
 
   
-    <link rel="stylesheet" href="./file/acquia.css" type="text/css"/>
+    <link rel="stylesheet" href="file/acquia.css" type="text/css"/>
   
-    <link rel="stylesheet" href="./file/stylesheet.css" type="text/css"/>
+    <link rel="stylesheet" href="file/stylesheet.css" type="text/css"/>
   
 
   
@@ -86,7 +86,8 @@
 
 <p>Presented by: Mark Sonnabaum</p>
 
-<p>http://msonnabaum.github.com/xhprof-presentation</p></div>
+<p>http://msonnabaum.github.com/xhprof-presentation</p>
+</div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/2">
 <h1>whoami</h1>
 
@@ -97,6 +98,7 @@
 <li>d.o. <a href="http://drupal.org/user/75278">msonnabaum</a></li>
 <li>twitter <a href="http://twitter.com/msonnabaum">@msonnabaum</a></li>
 </ul>
+
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/3">
 <h1>Profiling</h1>
@@ -105,6 +107,7 @@
 <li>It's awesome</li>
 <li>You should do it</li>
 </ul>
+
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/4">
 <h1>What is XHProf?</h1>
@@ -117,7 +120,8 @@
 
 
 <p><a href="https://github.com/facebook/xhprof">https://github.com/facebook/xhprof</a>
-<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p></div>
+<a href="http://pecl.php.net/package/xhprof">http://pecl.php.net/package/xhprof</a></p>
+</div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/5">
 <h1>xdebug/webgrind?</h1>
 
@@ -125,25 +129,16 @@
 <li>No memory profiling as of Xdebug 2.0.4</li>
 <li>Adds overhead</li>
 </ul>
-</div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="one/01_slide/6">
-<h1>Common code issues</h1>
 
-<ul>
-<li>Unnecessary repitition (static caches, persistent caches)</li>
-<li>Stuff that is dumb (make less dumb)</li>
-</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/6">
+<h1>Installing: pecl</h1>
+
+<pre><code>pear upgrade PEAR
+pecl install xhprof-0.9.2
+</code></pre>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/7">
-<h1>Installing: pecl (?)</h1>
-
-<pre><code>pecl install xhprof-0.9.2
-</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/8">
-<h1>Installing: Ubuntu</h1>
-
-<p><a href="https://launchpad.net/~brianmercer/+archive/php5-xhprof">https://launchpad.net/~brianmercer/+archive/php5-xhprof</a></p></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/9">
 <h1>Installing: OSX - MAMP</h1>
 
 <h2>php 5.3 (simple)</h2>
@@ -152,15 +147,17 @@
 
 <h2>php 5.2 (painful)</h2>
 
-<p><a href="http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard">http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard</a></p></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/10">
+<p><a href="http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard">http://www.lullabot.com/articles/installing-xhprof-mamp-on-mac-os-106-snow-leopard</a></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/8">
 <h1>Installing: OSX - brew</h1>
 
 <p><a href="https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb">https://github.com/msonnabaum/megalodon/blob/master/formulas/xhprof.rb</a></p>
 
 <pre><code>brew install xhprof
-</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/11">
+</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/9">
 <h1>Installing: source</h1>
 
 <pre><code>wget http://pecl.php.net/get/xhprof-0.9.2.tgz
@@ -168,19 +165,21 @@ tar -xzf xhprof-0.9.2.tgz &amp;&amp; cd xhprof-0.9.2
 phpize
 make
 cp modules/xhprof.so $(php-config --extension-dir)/
-</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/12">
+</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/10">
 <h1>Preperations</h1>
 
 <ul>
 <li>Setup the site locally</li>
-<li>disable xdebug
+<li>disable xdebug (skews results)
  <pre><code> ;zend_extension=/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so</code></pre></li>
 <li>D6: <a href="http://drupal.org/project/devel">devel</a>, D7: <a href="http://drupal.org/project/xhprof">xhprof module</a></li>
-<li><a href="http://drupal.org/project/memcache">memcache</a> (optional)</li>
+<li><a href="http://drupal.org/project/memcache">memcache</a>/<a href="http://drupal.org/project/redis">redis</a> (optional but recommended)</li>
 </ul>
+
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/13">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/11">
 <h1>Preperations</h1>
 
 <h2>D6</h2>
@@ -191,9 +190,96 @@ $conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';</code></pre>
 
 <h2>D7</h2>
 
-<pre class="sh_php"><code>$conf['xhprof_enabled'] = 1;</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content subsection" ref="one/01_slide/14">
+<pre class="sh_php"><code>$conf['xhprof_enabled'] = 1;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/12">
+<h1>Special functions</h1>
+
+<pre><code>main()
+</code></pre>
+
+<ul>
+<li>Doesn't actually exist, just represents the entire request.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/13">
+<h1>Special functions</h1>
+
+<pre><code>load::node/node.module
+</code></pre>
+
+<h2>load() = load/compile time</h2>
+
+<ul>
+<li>Time spent here usually means loading from a slow disk, a cold APC hit, or apc.shm_size is too small.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/14">
+<h1>Special functions</h1>
+
+<pre><code>run_init::node/node.module
+</code></pre>
+
+<h2>run_init() = code execution</h2>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/15">
+<h1>Special functions</h1>
+
+<pre><code>drupal_render
+ &#x21B3; drupal_render@1
+    &#x21B3; drupal_render@2
+       &#x21B3; drupal_render@3
+          &#x21B3; drupal_render@4
+             &#x21B3; drupal_render@5
+</code></pre>
+
+<p>@ shows recursion depth.</p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/16">
+<h1>Red flags</h1>
+
+<h2>exec(), shell_exec()</h2>
+
+<ul>
+<li>Only use when it can't be done in PHP</li>
+<li>Avoid unnecessary I/O</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/17">
+<h1>Red flags</h1>
+
+<h2>drupal_http_request()</h2>
+
+<ul>
+<li>Move client side or queue it when possible</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/18">
+<h1>Red flags</h1>
+
+<h2>file_scan_directory()</h2>
+
+<ul>
+<li>Disks are crazy slow, don't do this</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="one/01_slide/19">
 <h1>PROFILIN' TIME</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="one/01_slide/20">
+<h1>Resources</h1>
+
+<ul>
+<li><a href="http://drupal.org/project/xhprof">XHProf module for D7</a></li>
+<li><a href="https://github.com/msonnabaum/xhproflib">XHProflib</a></li>
+<li><a href="http://xhprof.me">xhprof.me</a></li>
+</ul>
+
 
 <p class="notes">http://xhprof-pres.dev/events - unpack_options</p>
 
@@ -201,7 +287,8 @@ $conf['devel_xhprof_url'] = 'http://localhost/xhprof/xhprof_html';</code></pre>
 .notes - http://d7.dev/admin/reports/xhprof
 .notes - http://d7.dev/admin/reports/xhprof/diff/4e99c0c276515/4e99c0bf949a8</p>
 
-<p class="notes">XHProflib - https://github.com/msonnabaum/XHProfLib</p></div>
+<p class="notes">XHProflib - https://github.com/msonnabaum/XHProfLib</p>
+</div>
 </div></div>
 
 </body>
